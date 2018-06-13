@@ -1,0 +1,17 @@
+{
+  "name": "tourchannel/parks",
+  "description": "Pacote de integração com API de parques do TourChannel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ataides Rodrigues",
+      "email": "ataides@plincturismo.com.br"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TourChannel\\Parks\\": "src/"
+    }
+  },
+  "require": {}
+}

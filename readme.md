@@ -1,4 +1,4 @@
-![Logo TourOn](https://www.touron.com.br/modules/site/img/touron.svg  =100x)
+![Logo TourOn](https://www.touron.com.br/modules/site/img/touron.svg)
 
 # TourChannel / Parks / TourOn
 

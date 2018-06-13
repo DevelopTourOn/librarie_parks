@@ -20,7 +20,10 @@ class Example
      */
     public function __construct()
     {
-        TourChannelParks::setConfig(config('parques'));
+        /** Caso a aplicação não esteja em laravel descomente a linha abaixo */
+        //$config = include realpath(__DIR__ . "../../parques-config.php");
+        //TourChannelParks::setConfig($config);
+
         $this->touchannel_parks = new TourChannelParks();
     }
 

@@ -16,7 +16,7 @@ class TourChannelParks
     /**
      * URl para recuperar os parques disponiveis
      */
-    const PATH_PARKS_AVAILABLE = "/parks";
+    private $PATH_PARKS_AVAILABLE = "/parks";
 
     /**
      * URL para pesquisa do voucher
@@ -66,7 +66,7 @@ class TourChannelParks
     {
         $touchannel_parks = new RequestConnect();
 
-        return $touchannel_parks->connect_api(self::PATH_PARKS_AVAILABLE, HttpEnum::METHOD_GET);
+        return $touchannel_parks->connect_api($this->PATH_PARKS_AVAILABLE, HttpEnum::METHOD_GET);
     }
 
     /**

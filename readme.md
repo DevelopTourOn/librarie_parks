@@ -15,38 +15,12 @@ Instale a biblioteca: `composer require tourchannel/parks`
 
 ## Configuração usando Laravel 5
 
-1. Copie arquivo `vendor\tourchannel\parks\resources\parques.php` e cole dentro da pasta `config`
-2. Configure o `user` e `password` da sua aplicação
-3. Você deve passar a configuração no método `TourChannelParks::setConfig(array $config)` exemplo abaixo:
-4. Caso possua alguma dúvida olhe o arquivo de exemplo em `vendor\tourchannel\parks\resources\Example.php`
+Adicione em seu `.env` o trecho abaixo e altere com os seus dados de acesso
 
-```php
-<?php namespace App\Services;
-
-use TourChannel\Parks\TourChannelParks;
-
-/**
- * Class Example
- */
-class ParkService
-{
-    /**
-     * Bilioteca API parques
-     * @var TourChannelParks
-     */
-    private $touchannel_parks;
-
-    /**
-     * Configuração da API
-     * Example constructor.
-     */
-    public function __construct()
-    {
-        // Array de configuração da aplicação
-        TourChannelParks::setConfig(config('parques'));
-        $this->touchannel_parks = new TourChannelParks();
-    }
-}
+```text
+## DADOS DE ACESSO API PARQUES
+TOURCHANNEL_PARKS_USER=usuario
+TOURCHANNEL_PARKS_PASSWORD=senha_usuario
 ```
 
 ## Configuração sem Laravel
@@ -87,36 +61,36 @@ class ParksClass
         TourChannelParks::setConfig($config);
         $this->touchannel_parks = new TourChannelParks();
     }
+    
+    /**
+     * Retorna os parques disponívies para o usuário
+     * @return mixed|object
+     * @throws Exception
+     */
+    public function getParks()
+    {
+        return $this->touchannel_parks->getParksAvailable();
+    }
 }
 ```
+
+## Exemplos de utilização
+
+Para ver os métodos disponíveis e de como usá-los
+
+Olhe o arquivo `vendor\tourchannel\parks\resources\Example.php`
 
 ## Testando a biblioteca
-
-Para testar se a configuração está correta adicione o método abaixo em sua classe:
-
-```php
-/**
- * Retorna os parques disponívies para o usuário
- * @return mixed|object
- * @throws Exception
- */
-public function getParks()
-{
-    return $this->touchannel_parks->getParksAvailable();
-}
-```
-
-Agora debug o resultado:
  
- **USANDO LARAVEL 5**:
+ - **USANDO LARAVEL 5**
 
 ```php
-$parks = new ParkService(); // Nome da sua classe
+$parks = new TourChannelParks();
 
-dd($parks->getParks());
+dd($parks->getParksAvailable());
 ```
 
- **SEM LARAVEL**:
+ - **SEM LARAVEL**
  
 ```php
 $parks = new ParksClass(); // Nome da sua classe
@@ -146,6 +120,10 @@ Se tudo estiver correto você deve ter um retorno parecido com este:
 ## Changelog
 
 Lista de mudanças, melhorias e correções de bugs.
+
+### v1.1.0 - *(14 Junho 2018)*
+
+- Adicionado suporte a configuração no `.env` quando for Laravel 
 
 ### v1.0.0 - *(13 Junho 2018)*
 

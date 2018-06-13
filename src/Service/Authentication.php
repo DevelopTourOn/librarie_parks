@@ -34,7 +34,7 @@ class Authentication
     static public function getToken()
     {
         // Config user
-        self::$CONFIG = $GLOBALS[self::GLOBAL_KEY];
+        self::$CONFIG = self::getConfigUser();
 
         // Recupera o token no cache
         $token_cache = self::verifyTokenCache();
@@ -46,6 +46,28 @@ class Authentication
 
         // Caso não tenha o token gera um novo token
         return $token_cache;
+    }
+
+    /**
+     * Recupera o usuario e senha para API
+     * Caso esteja com Laravel pega do ENV
+     * Senão usa a configuração de arquivo
+     * @return array|mixed
+     */
+    static private function getConfigUser()
+    {
+        // Caso a aplicação esteja em Laravel pegamos do ENV
+        if( function_exists('env')) {
+            // Arquivo de log fixo quando laravel
+            return [
+                'user' => env('TOURCHANNEL_PARKS_USER'),
+                'password' => env('TOURCHANNEL_PARKS_PASSWORD'),
+                'file_cache_token' => storage_path("app/token_api_parques.txt")
+            ];
+        }
+
+        // Senão pegamos da configuração normal
+        return $GLOBALS[self::GLOBAL_KEY];
     }
 
     /**

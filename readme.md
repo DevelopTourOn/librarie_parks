@@ -7,7 +7,6 @@ Pacote de integração com API de parques do TourChannel
 - [Configuração usando Laravel 5](#configuração-usando-laravel-5)
 - [Configuração sem laravel](#configuração-sem-laravel)
 - [Testando a biblioteca](#testando-a-biblioteca)
-- [Parque Snowland](#parque-snowland)
 - [Changelog](#changelog)
 
 ## Instalação Global
@@ -83,6 +82,7 @@ class ParksClass
     {
         // PATH do arquivo de configuração criado
         $config = include_once realpath(__DIR__ . "../../parques-config.php");
+        
         // Array de configuração da aplicação
         TourChannelParks::setConfig($config);
         $this->touchannel_parks = new TourChannelParks();

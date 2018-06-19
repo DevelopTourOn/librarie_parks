@@ -30,6 +30,7 @@ class RequestConnect
             CURLOPT_TIMEOUT => 30,
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_CAINFO => realpath(__DIR__ . "/../Certificate/cacert.pem"),
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_HTTPHEADER => [
                 "cache-control: no-cache",
@@ -69,6 +70,7 @@ class RequestConnect
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_CUSTOMREQUEST => $method,
+            CURLOPT_CAINFO => realpath(__DIR__ . "/../Certificate/cacert.pem"),
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_HTTPHEADER => [

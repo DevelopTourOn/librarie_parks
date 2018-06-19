@@ -26,10 +26,11 @@ TOURCHANNEL_PARKS_PASSWORD=senha_usuario
 ## Configuração sem Laravel
 
 1. Crie uma pasta chamada `parks-config` no diretório raiz da aplicação
-2. Copie o arquivo `vendor\tourchannel\parks\resources\parques-config.php` e cole dentro da pasta que foi criada
-3. Abra o arquivo copiado e configure o `user` e `password` da sua aplicação
-3. Você deve passar a configuração no método `TourChannelParks::setConfig(array $config)` exemplo abaixo:
-4. Caso possua alguma dúvida olhe o arquivo de exemplo em `vendor\tourchannel\parks\resources\Example.php`
+2. Crie um arquivo chamado `cache-parques.txt` dentro dessa pasta
+3. Copie o arquivo `vendor\tourchannel\parks\resources\parques-config.php` e cole dentro da pasta que foi criada
+4. Abra o arquivo copiado e configure o `user` e `password` da sua aplicação
+5. Você deve passar a configuração no método `TourChannelParks::setConfig(array $config)` exemplo abaixo:
+6. Caso possua alguma dúvida olhe o arquivo de exemplo em `vendor\tourchannel\parks\resources\Example.php`
 
 ```php
 <?php
@@ -121,10 +122,16 @@ Se tudo estiver correto você deve ter um retorno parecido com este:
 
 Lista de mudanças, melhorias e correções de bugs.
 
-### v1.1.0 - *(14 Junho 2018)*
+### *v1.1.1 - (19 Junho 2018)*
+
+- Adicionado certificado SSL para versões antigas do PHP
+- Ajustado caminho do arquivo de configuração sem Laravel
+- Adicionado passo para criar arquivo de cache no Readme 
+
+### *v1.1.0 - (14 Junho 2018)*
 
 - Adicionado suporte a configuração no `.env` quando for Laravel 
 
-### v1.0.0 - *(13 Junho 2018)*
+### *v1.0.0 - (13 Junho 2018)*
 
 - Criação e configuração da bilbioteca 

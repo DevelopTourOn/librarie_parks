@@ -67,7 +67,7 @@ trait Tickets
         // Recupera a data de nascimento em formato ISO
         $birthdate = $this->getBirthDate($birthdate);
 
-        // Calculo da idade do viajante usodo pelo eval
+        // Calculo da idade do viajante usado pelo eval
         $age = $birthdate->diff(new DateTime())->y;
 
         // Aplica a regra de idade do parque

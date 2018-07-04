@@ -122,6 +122,11 @@ Se tudo estiver correto você deve ter um retorno parecido com este:
 
 Lista de mudanças, melhorias e correções de bugs.
 
+### *v1.1.2 - (04 Julho 2018)*
+- Adicionado método para excluir o voucher `` $this->deleteVoucher($order_id) ``
+- Adicionado método para alterar a data de utilização `` $this->editVoucherDate($order_id, DateTime $new_date) ``
+- Adicionado Enum de dias de antencipação para cada Parque Cadastrado
+
 ### *v1.1.1 - (19 Junho 2018)*
 
 - Adicionado certificado SSL para versões antigas do PHP

@@ -6,6 +6,7 @@ use TourChannel\Parks\Parks\BetoCarrero;
 use TourChannel\Parks\Parks\Snowland;
 use TourChannel\Parks\Service\Authentication;
 use TourChannel\Parks\Service\RequestConnect;
+use TourChannel\Parks\Traits\Voucher;
 
 /**
  * Class TourChannelParks
@@ -13,16 +14,12 @@ use TourChannel\Parks\Service\RequestConnect;
  */
 class TourChannelParks
 {
+    use Voucher;
+
     /**
      * URl para recuperar os parques disponiveis
      */
     private $PATH_PARKS_AVAILABLE = "/parks";
-
-    /**
-     * URL para pesquisa do voucher
-     * @var string
-     */
-    private $PATH_VOUCHER = "/voucher/{id_voucher}";
 
     /**
      * URL para impressão do voucher
@@ -67,32 +64,6 @@ class TourChannelParks
         $touchannel_parks = new RequestConnect();
 
         return $touchannel_parks->connect_api($this->PATH_PARKS_AVAILABLE, HttpEnum::METHOD_GET);
-    }
-
-    /**
-     * Consulta o Voucher na API
-     * @param $voucher_id
-     * @return mixed|object
-     * @throws \Exception
-     */
-    public function getVoucher($voucher_id)
-    {
-        $touchannel_parks = new RequestConnect();
-
-        // Configura o id do voucher para pesquisa
-        $this->PATH_VOUCHER = str_replace("{id_voucher}", $voucher_id, $this->PATH_VOUCHER);
-
-        // Recupera os dados do voucher
-        $voucher = $touchannel_parks->connect_api($this->PATH_VOUCHER, HttpEnum::METHOD_GET);
-
-        // Quando o voucher está pronto
-        if($voucher->status == StatusVoucher::PRONTO) {
-
-            // URL de impressão do voucher sem a BASE URL
-            $voucher->voucher_url = str_replace(RequestConnect::URL_BASE_API, "", $voucher->voucher_url);
-        }
-
-        return $voucher;
     }
 
     /**
